@@ -42,17 +42,18 @@ from ..datasets.utils import lazy_import
 _prithvi_transforms = nn.Identity()  # Placeholder; supply normalization upstream
 
 _prithvi_meta_base = {
-    "dataset": "HLS",
+    "dataset": "Multisensor EO (HLS, Sentinel-1/2)",
     "model": None,
-    "resolution": 30,  # meters per pixel (HLS effective grid)
-    "bands": ("B2", "B3", "B4", "B5", "B6", "B7"),  # HLS/S2-like set used in paper
+    "resolution": 30,  # effective HLS grid resolution (Sentinel-2 resampled to 30 m)
+    "bands": ("B2", "B3", "B4", "B5", "B6", "B7"),
     "patch_size": 16,  # MAE/ViT tubelet spatial size (typical)
     "architecture": "Masked Autoencoder Transformer (ViT backbone)",
     "encoder": "ViT",
-    "hf_repo": None,
+    "ssl_method": "MAE pretraining (self-supervised)",
+    "hf_repo": "ibm-nasa-geospatial/Prithvi-EO-2.0-300M",
     "filename": None,
     "publication": "https://arxiv.org/abs/2310.18660",
-    "repo": "https://github.com/NASA-IMPACT/hls-foundation-os",
+    "repo": "https://github.com/NASA-IMPACT/Prithvi-EO-2.0",
     "license": "Apache-2.0",
     "task": "encoder",  # "encoder" or "segmentation"
 }
